@@ -1,0 +1,33 @@
+{
+    "name": "@helios-lang/utxorpc",
+    "version": "0.1.0",
+    "description": "Wrapper for TxPipe's NodeJS UTxORPC SDK, with @helios-lang/ledger types",
+    "type": "module",
+    "main": "src/index.js",
+    "types": "types/index.d.ts",
+    "scripts": {
+        "build": "pnpm run prettify && pnpm run build:types",
+        "build:types": "tsc -p jsconfig.json --noEmit false --emitDeclarationOnly",
+        "prettify": "prettier . --write"
+    },
+    "keywords": [],
+    "author": "Christian Schmitz",
+    "license": "BSD-3-Clause",
+    "dependencies": {
+        "@helios-lang/ledger": "^0.6.12",
+        "@helios-lang/tx-utils": "^0.3.12",
+        "@helios-lang/type-utils": "^0.2.8",
+        "@utxorpc/sdk": "^0.6.4"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.2",
+        "prettier": "^3.4.2",
+        "typescript": "^5.7.2"
+    },
+    "prettier": {
+        "trailingComma": "none",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": false
+    }
+}

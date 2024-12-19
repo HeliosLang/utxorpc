@@ -1,0 +1,238 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@helios-lang/ledger':
+        specifier: ^0.6.12
+        version: 0.6.12
+      '@helios-lang/tx-utils':
+        specifier: ^0.3.12
+        version: 0.3.12
+      '@helios-lang/type-utils':
+        specifier: ^0.2.8
+        version: 0.2.8
+      '@utxorpc/sdk':
+        specifier: ^0.6.4
+        version: 0.6.4(@bufbuild/protobuf@1.10.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.2
+        version: 22.10.2
+      prettier:
+        specifier: ^3.4.2
+        version: 3.4.2
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+packages:
+
+  '@bufbuild/protobuf@1.10.0':
+    resolution: {integrity: sha512-QDdVFLoN93Zjg36NoQPZfsVH9tZew7wKDKyV5qRdj8ntT4wQCOradQjRaTdwMhWUYsgKsvCINKKm87FdEk96Ag==}
+
+  '@connectrpc/connect-node@1.4.0':
+    resolution: {integrity: sha512-0ANnrr6SvsjevsWEgdzHy7BaHkluZyS6s4xNoVt7RBHFR5V/kT9lPokoIbYUOU9JHzdRgTaS3x5595mwUsu15g==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.4.2
+      '@connectrpc/connect': 1.4.0
+
+  '@connectrpc/connect-web@1.4.0':
+    resolution: {integrity: sha512-13aO4psFbbm7rdOFGV0De2Za64DY/acMspgloDlcOKzLPPs0yZkhp1OOzAQeiAIr7BM/VOHIA3p8mF0inxCYTA==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.4.2
+      '@connectrpc/connect': 1.4.0
+
+  '@connectrpc/connect@1.4.0':
+    resolution: {integrity: sha512-vZeOkKaAjyV4+RH3+rJZIfDFJAfr+7fyYr6sLDKbYX3uuTVszhFe9/YKf5DNqrDb5cKdKVlYkGn6DTDqMitAnA==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.4.2
+
+  '@fastify/busboy@2.1.1':
+    resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
+    engines: {node: '>=14'}
+
+  '@helios-lang/cbor@0.2.4':
+    resolution: {integrity: sha512-TcZlbM2BV/2PybexZeLNqeyiAbYwYAgog6oPA18z2d/2HlDGV4LxZj5TaGUO7Pd2Plh34tNddS8rqGchcY0qRg==}
+
+  '@helios-lang/codec-utils@0.3.3':
+    resolution: {integrity: sha512-4otFhdJ6c+Sokskq6VNyYprSes47gLkdNBPs4z5tZxKRxVCw326Co/tfCjVgp1ipomQmeVBhuULu8bgMhCEAug==}
+
+  '@helios-lang/compiler-utils@0.5.2':
+    resolution: {integrity: sha512-0Y5DaIvwXx4P8qXX30HPuvp5b6qJThwuslBPyiXZP5An7CjXEIRtvwGIQ4/dcKL3iGV9cjshoMr7dBQ2I0DCrw==}
+
+  '@helios-lang/crypto@0.2.2':
+    resolution: {integrity: sha512-3rJHC0qymLIYSdBWGwhdRgHSqw3XVWJ8pAYzbs6lDULpF7ow5UWJvN+smyu4v6dcKbRFbhAnvs+TcvQpXVGVGQ==}
+
+  '@helios-lang/era@0.1.4':
+    resolution: {integrity: sha512-wBV/qDLvfSwSywaQlo1EdnVhMW7XBSS2AnaOFmpLS/RrA75arn7ngf+MbEsfjQ1qayIPOPdL96M6vzPtauttWA==}
+
+  '@helios-lang/ledger@0.6.12':
+    resolution: {integrity: sha512-7hEBB0uFM3XU2IFwj8RmRtT4FRT7/kE1GQikn9+bSE7nwk4BkTcPXj+2B/gPAGHWC/bvRWPphyu0NMJdMdrK9A==}
+
+  '@helios-lang/tx-utils@0.3.12':
+    resolution: {integrity: sha512-jEqzz3b5cTiEte1UrW9USaJkZsvo8cZjQBPkHdgxqaodM9hfQ7ZvfPM+ffpBlkBYX33Mvl0Vj+C18amsMtgIcg==}
+
+  '@helios-lang/type-utils@0.2.8':
+    resolution: {integrity: sha512-ldtxPIZbE2TbbiFvvTqgiHng1uWmZj0w8z4yMMxPH79R+qt+romAOOmUXVdAN6YM2cA3yiE4lRlRpyGlVEQNMw==}
+
+  '@helios-lang/uplc@0.7.8':
+    resolution: {integrity: sha512-XmHzNT0hkjknm2P9uL/x9GgbhUAZsSm6xBQZSrwOkXqYniT322CKaQPZUd6UkPSpCE6WiHk+9mm0sNkvg65aoQ==}
+
+  '@types/node@20.14.10':
+    resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
+
+  '@types/node@22.10.2':
+    resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
+
+  '@utxorpc/sdk@0.6.4':
+    resolution: {integrity: sha512-DQK/w+5KTtufOr+pZ9fnms9C3/k/93EuWlVnqQaCLxU6N3vjYrIMF9gQgd9/ynE4zYM+VHjRjlvchEIGXBufYA==}
+
+  '@utxorpc/spec@0.12.0':
+    resolution: {integrity: sha512-Xl1PD3zui79ZoOqj8xQjUrA/+qxwJ4k7wlfmEDrSOPoKePtGlZNMwWL6SOU/GprgZOPWmtdlfmDQiTQVLZXL+Q==}
+    engines: {node: '>=20.0.0'}
+
+  base64-js@1.5.1:
+    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
+  buffer@6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
+
+  ieee754@1.2.1:
+    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
+  undici@5.28.4:
+    resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
+    engines: {node: '>=14.0'}
+
+snapshots:
+
+  '@bufbuild/protobuf@1.10.0': {}
+
+  '@connectrpc/connect-node@1.4.0(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.0))':
+    dependencies:
+      '@bufbuild/protobuf': 1.10.0
+      '@connectrpc/connect': 1.4.0(@bufbuild/protobuf@1.10.0)
+      undici: 5.28.4
+
+  '@connectrpc/connect-web@1.4.0(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.0))':
+    dependencies:
+      '@bufbuild/protobuf': 1.10.0
+      '@connectrpc/connect': 1.4.0(@bufbuild/protobuf@1.10.0)
+
+  '@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.0)':
+    dependencies:
+      '@bufbuild/protobuf': 1.10.0
+
+  '@fastify/busboy@2.1.1': {}
+
+  '@helios-lang/cbor@0.2.4':
+    dependencies:
+      '@helios-lang/codec-utils': 0.3.3
+
+  '@helios-lang/codec-utils@0.3.3': {}
+
+  '@helios-lang/compiler-utils@0.5.2':
+    dependencies:
+      '@helios-lang/codec-utils': 0.3.3
+      '@helios-lang/type-utils': 0.2.8
+
+  '@helios-lang/crypto@0.2.2':
+    dependencies:
+      '@helios-lang/codec-utils': 0.3.3
+      '@helios-lang/type-utils': 0.2.8
+
+  '@helios-lang/era@0.1.4': {}
+
+  '@helios-lang/ledger@0.6.12':
+    dependencies:
+      '@helios-lang/cbor': 0.2.4
+      '@helios-lang/codec-utils': 0.3.3
+      '@helios-lang/crypto': 0.2.2
+      '@helios-lang/type-utils': 0.2.8
+      '@helios-lang/uplc': 0.7.8
+
+  '@helios-lang/tx-utils@0.3.12':
+    dependencies:
+      '@helios-lang/codec-utils': 0.3.3
+      '@helios-lang/crypto': 0.2.2
+      '@helios-lang/ledger': 0.6.12
+      '@helios-lang/type-utils': 0.2.8
+      '@helios-lang/uplc': 0.7.8
+
+  '@helios-lang/type-utils@0.2.8': {}
+
+  '@helios-lang/uplc@0.7.8':
+    dependencies:
+      '@helios-lang/cbor': 0.2.4
+      '@helios-lang/codec-utils': 0.3.3
+      '@helios-lang/compiler-utils': 0.5.2
+      '@helios-lang/crypto': 0.2.2
+      '@helios-lang/era': 0.1.4
+      '@helios-lang/type-utils': 0.2.8
+
+  '@types/node@20.14.10':
+    dependencies:
+      undici-types: 5.26.5
+
+  '@types/node@22.10.2':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@utxorpc/sdk@0.6.4(@bufbuild/protobuf@1.10.0)':
+    dependencies:
+      '@connectrpc/connect': 1.4.0(@bufbuild/protobuf@1.10.0)
+      '@connectrpc/connect-node': 1.4.0(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.0))
+      '@connectrpc/connect-web': 1.4.0(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.0))
+      '@types/node': 20.14.10
+      '@utxorpc/spec': 0.12.0
+      buffer: 6.0.3
+    transitivePeerDependencies:
+      - '@bufbuild/protobuf'
+
+  '@utxorpc/spec@0.12.0':
+    dependencies:
+      '@bufbuild/protobuf': 1.10.0
+
+  base64-js@1.5.1: {}
+
+  buffer@6.0.3:
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+
+  ieee754@1.2.1: {}
+
+  prettier@3.4.2: {}
+
+  typescript@5.7.2: {}
+
+  undici-types@5.26.5: {}
+
+  undici-types@6.20.0: {}
+
+  undici@5.28.4:
+    dependencies:
+      '@fastify/busboy': 2.1.1
