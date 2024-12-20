@@ -13,5 +13,6 @@ export { makeDemeterUtxoRpcClient } from "./UtxoRpcClient.js"
  * @prop {(id: TxOutputId) => Promise<TxInput>} getUtxo
  * @prop {(address: Address) => Promise<TxInput[]>} getUtxos
  * @prop {(address: Address, assetClass: AssetClass) => Promise<TxInput[]>} getUtxosWithAssetClass
+ * @prop {(txId: TxId, options?: {onRollback?: () => any}) => Promise<void>} confirmTx
  * @prop {(tx: Tx) => Promise<TxId>} submitTx
  */

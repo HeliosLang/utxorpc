@@ -254,6 +254,38 @@ class DemeterUtxoRpcClient {
     }
 
     /**
+     * Waits until a Tx is confirmed on-chain
+     * Throws an error if options.onRollback isn't set and a rollback is detected (i.e. stage number decreases instead of increases)
+     * @param {TxId} txId
+     * @param {object} [options]
+     * @param {() => any} [options.onRollback] - if not specified an error is thrown
+     * @returns {Promise<void>}
+     */
+    async confirmTx(txId, options = {}) {
+        const stageEmitter = this.submitClient.waitForTx(
+            Uint8Array.from(txId.bytes)
+        )
+
+        let lastStage = 0
+
+        for await (let stage of stageEmitter) {
+            if (stage < lastStage) {
+                if (options.onRollback) {
+                    options.onRollback()
+                    break
+                }
+            }
+
+            lastStage = stage
+
+            if (stage >= 4) {
+                // ok
+                break
+            }
+        }
+    }
+
+    /**
      * @param {Tx} tx
      * @returns {Promise<TxId>}
      */
