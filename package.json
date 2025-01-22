@@ -1,6 +1,6 @@
 {
     "name": "@helios-lang/utxorpc",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Wrapper for TxPipe's NodeJS UTxORPC SDK, with @helios-lang/ledger types",
     "type": "module",
     "main": "src/index.js",
