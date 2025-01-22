@@ -10,6 +10,7 @@ import {
     makeTxInput,
     makeTxOutputId
 } from "@helios-lang/ledger"
+import { UtxoAlreadySpentError } from "@helios-lang/tx-utils"
 import { expectDefined } from "@helios-lang/type-utils"
 
 /**
@@ -140,7 +141,10 @@ class DemeterUtxoRpcClient {
             for await (let t of tipFollower) {
                 console.log(t)
                 if (t.action == "apply") {
-                    tipSlot = expectDefined(t.block.header?.slot)
+                    tipSlot = expectDefined(
+                        t.block.header?.slot,
+                        "block.header.slot undefined in DemeterUtxoRpcClient.parameters"
+                    )
                     tipTime = Date.now()
                     break
                 }
@@ -160,12 +164,14 @@ class DemeterUtxoRpcClient {
                 collateralPercentage: Number(rawParams.collateralPercentage),
                 maxTxExCpu: Number(
                     expectDefined(
-                        rawParams.maxExecutionUnitsPerTransaction?.steps
+                        rawParams.maxExecutionUnitsPerTransaction?.steps,
+                        "UtxoRpc rawParams.maxExecutionUnitsPerTransaction.steps"
                     )
                 ),
                 maxTxExMem: Number(
                     expectDefined(
-                        rawParams.maxExecutionUnitsPerTransaction?.memory
+                        rawParams.maxExecutionUnitsPerTransaction?.memory,
+                        "UtxoRpc rawParams.maxExecutionUnitsPerTransaction.memory"
                     )
                 ),
                 exCpuFeePerUnit: rawParams.prices?.steps
@@ -180,16 +186,21 @@ class DemeterUtxoRpcClient {
                 utxoDepositPerByte: Number(rawParams.coinsPerUtxoByte),
                 refScriptsFeePerByte: defaultParams.minFeeRefScriptCostPerByte, // TODO: get this from rawParams,
                 costModelParamsV1: expectDefined(
-                    rawParams.costModels?.plutusV1
+                    rawParams.costModels?.plutusV1,
+                    "UtxoRpc rawParams.costModels.plutusV1"
                 ).values.map((x) => Number(x)),
                 costModelParamsV2: expectDefined(
-                    rawParams.costModels?.plutusV2
+                    rawParams.costModels?.plutusV2,
+                    "UtxoRpc rawParams.costModels.plutusV2"
                 ).values.map((x) => Number(x)),
                 costModelParamsV3: expectDefined(
-                    rawParams.costModels?.plutusV3
+                    rawParams.costModels?.plutusV3,
+                    "UtxoRpc rawParams.costModels.plutusV3"
                 ).values.map((x) => Number(x)),
-                refTipSlot: Number(expectDefined(tipSlot)),
-                refTipTime: expectDefined(tipTime),
+                refTipSlot: Number(
+                    expectDefined(tipSlot, "unable to fetch tip slot")
+                ),
+                refTipTime: expectDefined(tipTime, "unable to fetch tip time"),
                 secondsPerSlot: 1 // TODO: get this from rawParams
             }
 
@@ -216,14 +227,24 @@ class DemeterUtxoRpcClient {
      * @returns {Promise<TxInput>}
      */
     async getUtxo(id) {
-        const [utxo] = await this.queryClient.readUtxosByOutputRef([
+        const [rawUtxo] = await this.queryClient.readUtxosByOutputRef([
             {
                 txHash: Uint8Array.from(id.txId.bytes),
                 outputIndex: id.index
             }
         ])
 
-        return convertUtxo(utxo)
+        // must also read from address, so we can throw an error if it has already been consumed
+
+        const utxo = convertUtxo(rawUtxo)
+
+        const unspentUtxos = await this.getUtxos(utxo.address)
+
+        if (unspentUtxos.some((unspentUtxo) => unspentUtxo.isEqual(utxo))) {
+            return utxo
+        } else {
+            throw new UtxoAlreadySpentError(utxo)
+        }
     }
 
     /**
@@ -251,6 +272,36 @@ class DemeterUtxoRpcClient {
         )
 
         return utxos.map(convertUtxo)
+    }
+
+    /**
+     * @param {AssetClass} assetClass
+     * @returns {Promise<TxInput[]>}
+     */
+    async searchUtxosWithAssetClass(assetClass) {
+        const utxos = await this.queryClient.searchUtxosByAsset(
+            Uint8Array.from(assetClass.mph.bytes),
+            Uint8Array.from(assetClass.tokenName)
+        )
+
+        return utxos.map(convertUtxo)
+    }
+
+    /**
+     * @param {AssetClass} assetClass
+     * @returns {Promise<Address[]>}
+     */
+    async getAddressesWithAssetClass(assetClass) {
+        const utxos = await this.searchUtxosWithAssetClass(assetClass)
+
+        /**
+         * @type {Map<string, Address>}
+         */
+        const m = new Map()
+
+        utxos.forEach((utxo) => m.set(utxo.address.toString(), utxo.address))
+
+        return Array.from(m.values())
     }
 
     /**
